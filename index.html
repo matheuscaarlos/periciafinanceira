@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perito Judicial | Financeiro e Trabalhista</title>
+    <!-- Carregamento do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregamento de Ícones Profissionais (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Configuração de fonte para Inter, que é limpa e profissional */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Fundo muito suave */
+            color: #1a202c; /* Texto quase preto */
+        }
+        /* Estilo para a animação de hover nos botões CTA */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(23, 37, 84, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(23, 37, 84, 0.4);
+        }
+        /* Estilo para as seções */
+        .section-padding {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        /* Gradiente de fundo sutil para a seção de herói */
+        .hero-background {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho (Header) e Navegação -->
+    <header class="bg-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-black tracking-wider text-gray-900 hover:text-amber-600 transition duration-300">
+                PERITO <span class="text-blue-800">TÉCNICO</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-gray-700 hover:text-amber-600 transition duration-150 font-semibold">Início</a>
+                <a href="#sobre" class="text-gray-700 hover:text-amber-600 transition duration-150 font-semibold">Credenciais</a>
+                <a href="#servicos" class="text-gray-700 hover:text-amber-600 transition duration-150 font-semibold">Serviços</a>
+                <a href="#contato" class="text-white bg-blue-800 hover:bg-blue-900 px-6 py-2.5 rounded-xl font-bold transition duration-150 shadow-lg cta-button">
+                    Solicitar Proposta
+                </a>
+            </nav>
+            <!-- Botão de menu para mobile -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+        <!-- Menu Mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <nav class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Início</a>
+                <a href="#sobre" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Credenciais</a>
+                <a href="#servicos" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Serviços</a>
+                <a href="#contato" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-blue-800 hover:bg-blue-900 text-center">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção 1: Início (Hero) - Chamativo e Profissional -->
+        <section id="home" class="section-padding hero-background pt-28 pb-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Conteúdo Principal -->
+                <div class="lg:w-7/12 text-center lg:text-left">
+                    <span class="text-lg font-bold uppercase text-amber-600 tracking-widest block mb-2">
+                        Perícia Contábil e Assistência Técnica Judicial
+                    </span>
+                    <!-- Título Principal com ênfase -->
+                    <h1 class="mt-4 text-6xl md:text-7xl font-extrabold leading-tight text-gray-900">
+                        Rigor e Precisão em <span class="text-blue-800">Cálculos Judiciais</span>.
+                    </h1>
+                    <!-- Subtítulo e Declaração de Valor -->
+                    <p class="mt-6 text-xl text-gray-600 max-w-xl lg:max-w-none">
+                        Especialista em quantificação de valores em litígios **Trabalhistas** e **Financeiros**. Transformando complexidade técnica em clareza jurídica.
+                    </p>
+
+                    <!-- Chamada para Ação Principal -->
+                    <div class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contato" class="cta-button w-full sm:w-auto px-10 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-amber-600 hover:bg-amber-700 shadow-xl transition duration-300">
+                            Fale com o Perito
+                        </a>
+                        <a href="#servicos" class="cta-button w-full sm:w-auto px-10 py-4 border-2 border-blue-800 text-lg font-bold rounded-xl text-blue-800 bg-white hover:bg-blue-50 shadow-lg transition duration-300">
+                            Ver Expertise
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Destaque Visual (Gráfico/Selo) -->
+                <div class="lg:w-5/12 mt-16 lg:mt-0 flex justify-center">
+                    <div class="p-8 bg-white border-8 border-blue-800 rounded-full shadow-2xl transition duration-500 hover:scale-[1.02] transform">
+                        <i data-lucide="calculator" class="w-28 h-28 text-amber-600 animate-pulse"></i>
+                        <div class="mt-4 text-center">
+                            <p class="text-2xl font-black text-gray-900">10+ Anos</p>
+                            <p class="text-sm text-gray-600">Experiência Pericial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Sobre o Perito (Credibilidade) -->
+        <section id="sobre" class="section-padding bg-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-sm font-semibold uppercase text-blue-800">Conheça Nossas Qualificações</span>
+                    <h2 class="mt-2 text-4xl font-extrabold text-gray-900">Credenciais e Ética Profissional</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                    
+                    <!-- Coluna da Foto e Bio -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="bg-white p-8 rounded-xl shadow-2xl text-center border-t-8 border-amber-600">
+                            <!-- Placeholder para Foto Profissional -->
+                            <div class="w-40 h-40 mx-auto rounded-full bg-gray-300 mb-6 flex items-center justify-center text-gray-700 font-black text-xl border-4 border-white shadow-lg">
+                                [Foto Pessoal]
+                            </div>
+                            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Dr. [Seu Nome Completo]</h3>
+                            <p class="text-md font-semibold text-blue-800">Contador, Economista e Perito Judicial Certificado</p>
+                        </div>
+                    </div>
+
+                    <!-- Coluna do Texto Institucional -->
+                    <div class="lg:col-span-2 lg:pl-8">
+                        <h3 class="text-3xl font-extrabold text-gray-900">O Pilar da Imparcialidade Técnica</h3>
+                        <p class="mt-4 text-lg text-gray-600 leading-relaxed border-l-4 border-amber-600 pl-4">
+                            Nossa atuação é regida pelo Código de Processo Civil, pelas Normas Brasileiras de Contabilidade (NBC TP 01) e, acima de tudo, pela **ética e imparcialidade**. Nosso objetivo é apresentar os fatos contábeis de forma clara e inquestionável ao Juízo.
+                        </p>
+                        
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <!-- Certificado 1 -->
+                            <div class="flex items-start p-4 bg-white rounded-xl shadow-lg border-b-4 border-blue-600">
+                                <i data-lucide="book-check" class="w-7 h-7 text-blue-800 mr-4 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Registro nos Tribunais</h4>
+                                    <p class="text-sm text-gray-600">Credenciado na Justiça do Trabalho (AJ-JT), Justiça Federal e Tribunais Estaduais.</p>
+                                </div>
+                            </div>
+                            <!-- Certificado 2 -->
+                            <div class="flex items-start p-4 bg-white rounded-xl shadow-lg border-b-4 border-amber-600">
+                                <i data-lucide="shield-check" class="w-7 h-7 text-amber-600 mr-4 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Titulação e Formação</h4>
+                                    <p class="text-sm text-gray-600">Pós-graduado em Perícia Contábil e membro ativo do Conselho Regional [CRC/CRA/CORECON].</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Serviços Detalhados - Cards de Destaque -->
+        <section id="servicos" class="section-padding bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-sm font-semibold uppercase text-amber-600">Nossa Expertise em Números</span>
+                <h2 class="mt-2 text-4xl font-extrabold text-gray-900">Serviços Chave para a Decisão Judicial</h2>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <!-- Cartão 1: Perícia Trabalhista -->
+                    <div class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-b-8 border-amber-600 hover:border-blue-800 flex flex-col h-full transform hover:scale-[1.03]">
+                        <i data-lucide="wrench" class="w-12 h-12 text-amber-600 mb-4 transition group-hover:text-blue-800"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Perícia Trabalhista</h3>
+                        <p class="text-gray-600 flex-grow">Cálculos de liquidação de sentença, apuração de horas extraordinárias, adicionais de insalubridade e periculosidade, e revisão de verbas rescisórias.</p>
+                        <ul class="mt-4 text-left text-sm text-gray-500 space-y-1">
+                            <li>• Laudos para Justiça do Trabalho</li>
+                            <li>• Análise de Cartões de Ponto</li>
+                            <li>• Impugnação de Cálculos da Parte Contrária</li>
+                        </ul>
+                    </div>
+
+                    <!-- Cartão 2: Perícia Financeira e Bancária -->
+                    <div class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-b-8 border-blue-800 hover:border-amber-600 flex flex-col h-full transform hover:scale-[1.03]">
+                        <i data-lucide="bar-chart-3" class="w-12 h-12 text-blue-800 mb-4 transition group-hover:text-amber-600"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Perícia Financeira</h3>
+                        <p class="text-gray-600 flex-grow">Revisão de contratos, checagem de capitalização de juros (anatocismo), taxas abusivas, e recálculo de saldo devedor em empréstimos e financiamentos.</p>
+                        <ul class="mt-4 text-left text-sm text-gray-500 space-y-1">
+                            <li>• Revisão de Juros (Judicial/Extrajudicial)</li>
+                            <li>• Cálculos para Ações Revisionais</li>
+                            <li>• Avaliação Econômico-Financeira</li>
+                        </ul>
+                    </div>
+
+                    <!-- Cartão 3: Assistência Técnica -->
+                    <div class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-b-8 border-amber-600 hover:border-blue-800 flex flex-col h-full transform hover:scale-[1.03]">
+                        <i data-lucide="handshake" class="w-12 h-12 text-amber-600 mb-4 transition group-hover:text-blue-800"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Assistência Técnica Judicial</h3>
+                        <p class="text-gray-600 flex-grow">Apoio técnico estratégico para advogados. Elaboração de quesitos, pareceres técnicos de contestação e acompanhamento em todas as etapas da perícia.</p>
+                        <ul class="mt-4 text-left text-sm text-gray-500 space-y-1">
+                            <li>• Formulação Estratégica de Quesitos</li>
+                            <li>• Emissão de Parecer Técnico Crítico</li>
+                            <li>• Suporte em Audiências</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Destaque para Advogados -->
+                <div class="mt-20 bg-blue-800 p-12 rounded-xl shadow-2xl flex flex-col md:flex-row justify-between items-center text-white border-t-8 border-amber-600">
+                    <div>
+                        <h3 class="text-3xl font-extrabold">Seu Aliado Técnico nos Processos</h3>
+                        <p class="mt-2 text-blue-200">A precisão de um laudo é o diferencial entre o êxito e o risco.</p>
+                    </div>
+                    <a href="#contato" class="mt-6 md:mt-0 inline-flex items-center px-8 py-4 border border-transparent text-base font-bold rounded-xl text-gray-900 bg-amber-500 hover:bg-amber-600 transition duration-150 shadow-lg cta-button">
+                        <i data-lucide="message-square-text" class="w-5 h-5 mr-3"></i> Iniciar Análise de Caso
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Contato (Formulário) -->
+        <section id="contato" class="section-padding bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl shadow-2xl overflow-hidden">
+                    
+                    <!-- Informações de Contato (Background azul para destaque) -->
+                    <div class="p-10 lg:p-12 bg-blue-800 text-white flex flex-col justify-center">
+                        <h2 class="text-3xl font-extrabold mb-4 border-b-4 border-amber-600 pb-3">Contato Profissional</h2>
+                        <p class="text-blue-200 mb-8">Envie os detalhes do seu processo ou solicite o currículo completo para nomeação.</p>
+                        
+                        <div class="space-y-6">
+                            <p class="flex items-start text-lg">
+                                <i data-lucide="map-pin" class="w-6 h-6 mr-4 mt-1 flex-shrink-0 text-amber-500"></i>
+                                Escritório [Cidade/Estado]<br>Atendimento via PJe e e-Proc em todo o Brasil.
+                            </p>
+                            <p class="flex items-center text-lg">
+                                <i data-lucide="phone" class="w-6 h-6 mr-4 text-amber-500"></i>
+                                +55 (XX) 9XXXX-XXXX
+                            </p>
+                            <p class="flex items-center text-lg">
+                                <i data-lucide="mail" class="w-6 h-6 mr-4 text-amber-500"></i>
+                                contato@[seu-dominio].com.br
+                            </p>
+                        </div>
+                        <div class="mt-12">
+                            <a href="#" target="_blank" class="text-white hover:text-amber-500 transition duration-150 inline-flex items-center text-lg font-semibold">
+                                <i data-lucide="linkedin" class="w-8 h-8 mr-3"></i>
+                                Perfil Profissional (LinkedIn)
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulário de Contato -->
+                    <div class="p-10 lg:p-12">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Inicie sua Consulta</h3>
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold text-gray-700">Nome / Escritório</label>
+                                    <input type="text" name="name" id="name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-amber-600 focus:border-amber-600">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-gray-700">E-mail</label>
+                                    <input type="email" name="email" id="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-amber-600 focus:border-amber-600">
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="subject" class="block text-sm font-semibold text-gray-700">Assunto (Ex: Quesitos Trabalhistas)</label>
+                                <input type="text" name="subject" id="subject" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-amber-600 focus:border-amber-600">
+                            </div>
+                            <div class="mt-6">
+                                <label for="message" class="block text-sm font-semibold text-gray-700">Mensagem e Urgência</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-amber-600 focus:border-amber-600"></textarea>
+                            </div>
+                            <div id="form-message" class="mt-4 text-center text-sm font-bold text-red-600 hidden"></div>
+                            <div class="mt-8">
+                                <button type="submit" class="w-full inline-flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg text-lg font-bold text-white bg-blue-800 hover:bg-blue-900 transition duration-300 cta-button">
+                                    <i data-lucide="send" class="w-5 h-5 mr-3"></i> Enviar Solicitação
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé (Footer) -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2024 [Seu Nome]. Todos os direitos reservados. | Desenvolvido com <span class="text-amber-500 font-bold">Rigor e Transparência</span>.</p>
+            <div class="mt-3 flex justify-center space-x-4">
+                <a href="#home" class="text-gray-400 hover:text-white transition duration-150">Início</a>
+                <span class="text-gray-600">|</span>
+                <a href="#servicos" class="text-gray-400 hover:text-white transition duration-150">Serviços</a>
+                <span class="text-gray-600">|</span>
+                <a href="#contato" class="text-gray-400 hover:text-white transition duration-150">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para iniciar os ícones Lucide
+        lucide.createIcons();
+
+        // 1. Lógica do Menu Mobile
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // 2. Lógica de Submissão do Formulário (Simulação)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formMessage = document.getElementById('form-message');
+            
+            // Simulação de envio bem-sucedido
+            formMessage.classList.remove('hidden', 'text-red-600');
+            formMessage.classList.add('text-green-600');
+            formMessage.innerHTML = 'Mensagem enviada! Analisaremos sua solicitação com urgência.';
+            
+            // Limpar o formulário após 3 segundos
+            setTimeout(() => {
+                form.reset();
+                formMessage.classList.add('hidden');
+                formMessage.classList.remove('text-green-600');
+            }, 3000);
+
+            // Em um ambiente real, esta função faria uma requisição AJAX/fetch para um backend de envio de e-mail.
+            console.log("Dados do formulário simulados para envio:", {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            });
+        }
+
+        // 3. Fechar menu mobile ao clicar em um link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
