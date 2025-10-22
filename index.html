@@ -16,7 +16,7 @@
             color: #1a202c; /* Texto quase preto */
         }
 
-        /* PALETA: AZUL MARINHO ESCURO (STEEL) E BRONZE METÁLICO (NOVO ACENTO: #C0A045) */
+        /* PALETA: AZUL MARINHO ESCURO (STEEL) E BRONZE METÁLICO (ACENTO: #C0A045) */
         .color-primary-dark {
             background-color: #0F2F52; /* Azul Marinho Escuro (Steel) */
         }
@@ -47,7 +47,7 @@
             box-shadow: 0 8px 25px rgba(192, 160, 69, 0.7);
         }
 
-        /* Estilo para a animação de hover nos botões CTA */
+        /* Estilo para a animação de hover nos botões CTA e cards */
         .cta-button {
             transition: all 0.3s ease;
         }
@@ -67,6 +67,107 @@
             transform: scale(1.1);
             box-shadow: 0 10px 30px rgba(27, 219, 74, 0.5);
         }
+
+        /* Estilo para a seção de Métricas (Contador) */
+        .metric-item {
+            position: relative;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        .metric-item::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .metric-item:last-child::after {
+            display: none;
+        }
+        /* Remove o separador em telas pequenas */
+        @media (max-width: 768px) {
+            .metric-item::after {
+                display: none;
+            }
+        }
+        
+        /* ---------------------------------------------------- */
+        /* ANIMAÇÕES SUAVES E PROFISSIONAIS (AJUSTADAS AQUI)    */
+        /* ---------------------------------------------------- */
+        .animate-hidden {
+            opacity: 0;
+            /* Transição mais longa (1s) e com curva de aceleração profissional (ease-out) */
+            transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Posições iniciais do transform - Movimento sutil (de 20px) */
+        .animate-fade-up {
+            transform: translateY(20px);
+        }
+        .animate-fade-left {
+            transform: translateX(-20px);
+        }
+        .animate-fade-right {
+            transform: translateX(20px);
+        }
+        /* ---------------------------------------------------- */
+
+        /* Estilo para o FAQ (Accordion Simples com o elemento DETAILS) */
+        .faq-item details {
+            background-color: #f9f9f9;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.25rem; /* p-5 */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-md */
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .faq-item details:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            border-left: 5px solid #C0A045; /* Borda de destaque no hover */
+        }
+
+        .faq-item summary {
+            font-weight: 700; /* font-bold */
+            color: #0F2F52; /* text-primary-dark */
+            cursor: pointer;
+            list-style: none; /* Remove o marcador de lista padrão */
+            display: flex;
+            align-items: center;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+
+        /* Ícone de seta de expansão customizado para SUMMARY */
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0;
+            color: #C0A045; /* Cor do acento */
+            transition: transform 0.3s ease;
+        }
+
+        /* Gira o ícone para indicar abertura */
+        .faq-item details[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        .faq-item details[open] summary {
+            margin-bottom: 0.75rem; /* mt-3, após a abertura */
+            border-bottom: 1px solid #E5E7EB; /* Linha de separação */
+            padding-bottom: 0.75rem;
+        }
+
+        .faq-item details p {
+            color: #4a5568; /* text-gray-700 */
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -74,8 +175,14 @@
     <!-- Variáveis de Contato (Para facilitar a edição) --><script>
         const whatsappNumber = "5587988593247"; 
         const whatsappDisplay = "+55 (87) 98859-3247";
-        const preFilledMessage = "Olá, gostaria de solicitar uma proposta de perícia judicial.";
+        const preFilledMessage = "Olá, gostaria de solicitar uma proposta e verificar a disponibilidade do perito para um novo caso.";
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(preFilledMessage)}`;
+        
+        // Função simulada para o download do CV
+        function handleDownloadCV() {
+            alert("Download do Currículo Vitae (PDF) simulado iniciado. O arquivo real seria baixado aqui.");
+            console.log("Ação: Currículo Vitae do Perito solicitado. Em um ambiente real, um PDF seria servido.");
+        }
     </script>
 
     <!-- Botão Flutuante do WhatsApp --><a href="javascript:void(0)" onclick="window.open(whatsappLink, '_blank')" 
@@ -85,9 +192,9 @@
 
     <!-- Cabeçalho (Header) e Navegação - BASE AZUL MARINHO --><header class="color-primary-dark shadow-xl sticky top-0 z-50 border-b-4 border-accent-gold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- LOGO: Substituindo o texto pela imagem da logo, com fallback --><a href="#home" class="flex items-center space-x-2">
-                <img src="uploaded:logo_matheus_carlos_final_corrigida.jpg-619bed65-6743-45aa-b509-ac984476fd54" 
-                     alt="Logotipo Perito Judicial Matheus Carlos"
+            <!-- LOGO: Monograma (c.png) --><a href="#home" class="flex items-center space-x-2">
+                <img src="uploaded:c.png-76688778-56f8-46e9-a2e5-0bc41e85de72" 
+                     alt="Logotipo Monograma Perito Judicial c.png"
                      class="h-10 w-auto object-contain rounded"
                      onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-3xl font-black tracking-wider text-gray-100 hover:text-accent-gold transition duration-300\'>PERITO <span class=\'text-gray-400\'>TÉCNICO</span></span>';"
                 >
@@ -96,10 +203,12 @@
                 <a href="#home" class="text-gray-300 hover:text-accent-gold transition duration-150 font-semibold">Início</a>
                 <a href="#sobre" class="text-gray-300 hover:text-accent-gold transition duration-150 font-semibold">Credenciais</a>
                 <a href="#servicos" class="text-gray-300 hover:text-accent-gold transition duration-150 font-semibold">Serviços</a>
-                <!-- CTA: Bronze Metálico --><a href="javascript:void(0)" onclick="window.open(whatsappLink, '_blank')"
+                <a href="#duvidas" class="text-gray-300 hover:text-accent-gold transition duration-150 font-semibold">Dúvidas</a>
+                <a href="#avaliacoes" class="text-gray-300 hover:text-accent-gold transition duration-150 font-semibold">Clientes</a>
+                <!-- CTA: Bronze Metálico OTIMIZADO --><a href="javascript:void(0)" onclick="window.open(whatsappLink, '_blank')"
                    class="cta-button-veritas px-5 py-2.5 rounded-xl transition duration-150 shadow-lg cta-button flex items-center space-x-2">
                     <i class="fab fa-whatsapp text-lg text-[#0F2F52]"></i>
-                    <span>WhatsApp</span>
+                    <span>Solicitar Proposta</span>
                 </a>
             </nav>
             <!-- Botão de menu para mobile --><button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-100 hover:bg-[#163969]">
@@ -111,102 +220,169 @@
                 <a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-[#163969]">Início</a>
                 <a href="#sobre" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-[#163969]">Credenciais</a>
                 <a href="#servicos" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-[#163969]">Serviços</a>
+                <a href="#duvidas" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-[#163969]">Dúvidas</a>
+                <a href="#avaliacoes" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-[#163969]">Clientes</a>
                 <a href="javascript:void(0)" onclick="window.open(whatsappLink, '_blank')"
                    class="block px-3 py-2 rounded-lg text-base font-medium cta-button-veritas text-center flex items-center justify-center space-x-2">
                     <i class="fab fa-whatsapp text-lg text-[#0F2F52]"></i>
-                    <span>Chamar no WhatsApp</span>
+                    <span>Solicitar Proposta (WhatsApp)</span>
                 </a>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Seção 1: Início (Hero) - Fundo Claro com Destaques Metálicos --><section id="home" class="section-padding bg-white pt-28 pb-28 text-gray-900">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+        <!-- Seção 1: Início (Hero) --><section id="home" class="section-padding bg-white pt-28 pb-28 text-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Conteúdo Principal --><div class="lg:w-7/12 text-center lg:text-left">
-                    <span class="text-lg font-bold uppercase color-accent-gold tracking-widest block mb-2">
+                <!-- Coluna da Mensagem Principal (8/12) --><div class="lg:col-span-8 text-center lg:text-left">
+                    <span data-animate="fade-left" data-delay="0" class="text-lg font-bold uppercase color-accent-gold tracking-widest block mb-3">
                         Perícia Contábil e Assistência Técnica Judicial
                     </span>
-                    <!-- Título Principal com ênfase --><h1 class="mt-4 text-6xl md:text-7xl font-extrabold leading-tight">
+                    <!-- Título Principal com ênfase --><h1 data-animate="fade-left" data-delay="100" class="mt-2 text-6xl md:text-7xl font-extrabold leading-tight text-[#0F2F52]">
                         Rigor e Precisão em <span class="color-accent-gold">Cálculos Judiciais</span>.
                     </h1>
-                    <!-- Subtítulo e Declaração de Valor --><p class="mt-6 text-xl text-gray-600 max-w-xl lg:max-w-none">
+                    <!-- Subtítulo e Declaração de Valor --><p data-animate="fade-up" data-delay="200" class="mt-6 text-xl text-gray-600 max-w-xl lg:max-w-none">
                         Especialista em quantificação de valores em litígios **Trabalhistas** e **Financeiros**. Transformando complexidade técnica em clareza jurídica.
                     </p>
 
-                    <!-- Chamada para Ação Principal (BRONZE) --><div class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#contato" class="cta-button-veritas cta-button w-full sm:w-auto px-10 py-4 border border-transparent text-lg font-bold rounded-xl shadow-xl">
-                            Fale com o Perito
+                    <!-- Chamada para Ação Principal (BRONZE) OTIMIZADO -->
+                    <div data-animate="fade-up" data-delay="300" class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="javascript:void(0)" onclick="window.open(whatsappLink, '_blank')" 
+                           class="cta-button-veritas cta-button w-full sm:w-auto px-10 py-4 border border-transparent text-lg font-bold rounded-xl shadow-xl">
+                            Solicitar Proposta Agora
                         </a>
-                        <!-- Botão Secundário com Borda em Azul Aço --><a href="#servicos" class="cta-button w-full sm:w-auto px-10 py-4 border-2 border-[#0F2F52] text-lg font-bold rounded-xl text-[#0F2F52] hover:bg-[#0F2F52] hover:text-white shadow-lg transition duration-300">
+                        <!-- Botão Secundário com Borda em Azul Aço -->
+                        <a href="#servicos" class="cta-button w-full sm:w-auto px-10 py-4 border-2 border-[#0F2F52] text-lg font-bold rounded-xl text-[#0F2F52] hover:bg-[#0F2F52] hover:text-white shadow-lg transition duration-300">
                             Ver Expertise
                         </a>
                     </div>
                 </div>
 
-                <!-- Destaque Visual (Logo em Destaque) --><div class="lg:w-5/12 mt-16 lg:mt-0 flex justify-center">
-                    <div class="p-4 bg-gray-100 rounded-3xl shadow-xl transition duration-500 hover:scale-[1.02] transform border-4 border-accent-gold">
-                        <!-- Imagem da Logo com Fallback --><img id="hero-logo-img"
-                            src="uploaded:logo_matheus_carlos_final_corrigida.jpg-619bed65-6743-45aa-b509-ac984476fd54" 
+                <!-- Coluna do Destaque Visual (4/12) --><div data-animate="fade-right" data-delay="400" class="lg:col-span-4 mt-16 lg:mt-0 flex justify-center lg:justify-end">
+                    <!-- Destaque em Card com Borda Dourada --><div class="w-80 p-4 bg-gray-100 rounded-3xl shadow-2xl border-4 border-accent-gold transform hover:scale-[1.03] transition duration-500">
+                        <!-- IMAGEM PRINCIPAL: logo_matheus_carlos_final_corrigida.jpg --><img id="hero-logo-img"
+                            src="uploaded:logo_matheus_carlos_final_corrigida.jpg-7ed1f3f6-c914-4a02-8f48-a16b6e8f751f" 
                             alt="Logotipo Matheus Carlos - Perito Judicial"
-                            class="w-80 h-auto object-contain rounded-2xl p-4"
+                            class="w-full h-auto object-contain rounded-2xl p-4"
                             onerror="this.style.display='none'; document.getElementById('hero-logo-fallback').style.display='flex';"
                         />
-                        <!-- Fallback Logo (Visível se a imagem falhar) --><div id="hero-logo-fallback" class="hidden w-80 h-80 flex-col items-center justify-center bg-gray-200 rounded-2xl text-[#0F2F52] p-8">
-                            <i data-lucide="award" class="w-24 h-24 mb-4 color-accent-gold"></i>
-                            <span class="text-5xl font-extrabold">MC</span>
+                        <!-- Fallback Logo (Visível se a imagem falhar) --><div id="hero-logo-fallback" class="hidden w-full h-80 flex-col items-center justify-center bg-gray-200 rounded-2xl text-[#0F2F52] p-8">
+                            <img src="uploaded:c.png-76688778-56f8-46e9-a2e5-0bc41e85de72" alt="Monograma MC Fallback" class="w-24 h-24 mb-4 object-contain" />
                             <span class="text-base text-gray-600 mt-2">Perícia Técnica</span>
                         </div>
+                        <p class="mt-4 text-center text-sm font-semibold color-accent-gold">Seu parceiro de confiança na justiça.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção 2: Sobre o Perito (Credibilidade) - Fundo Cinza Claro --><section id="sobre" class="section-padding bg-gray-50 text-gray-900">
+        <!-- Seção 1.5: Métricas de Confiança (Trust Bar) --><section id="metricas" class="py-16 color-primary-dark text-white shadow-inner">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-700">
+                    
+                    <!-- Métrica 1: Anos de Experiência --><div data-animate="fade-up" data-delay="100" class="metric-item">
+                        <p class="text-4xl md:text-5xl font-extrabold color-accent-gold">08+</p>
+                        <p class="text-sm uppercase font-semibold text-gray-300 mt-1">Anos de Experiência</p>
+                    </div>
+
+                    <!-- Métrica 2: Laudos Entregues --><div data-animate="fade-up" data-delay="200" class="metric-item">
+                        <p class="text-4xl md:text-5xl font-extrabold color-accent-gold">150+</p>
+                        <p class="text-sm uppercase font-semibold text-gray-300 mt-1">Laudos Judiciais</p>
+                    </div>
+
+                    <!-- Métrica 3: Atuação Trabalhista --><div data-animate="fade-up" data-delay="300" class="metric-item">
+                        <p class="text-4xl md:text-5xl font-extrabold color-accent-gold">70%</p>
+                        <p class="text-sm uppercase font-semibold text-gray-300 mt-1">Ações Trabalhistas</p>
+                    </div>
+
+                    <!-- Métrica 4: Atuação Federal/Estadual --><div data-animate="fade-up" data-delay="400" class="metric-item">
+                        <p class="text-4xl md:text-5xl font-extrabold color-accent-gold">Brasil</p>
+                        <p class="text-sm uppercase font-semibold text-gray-300 mt-1">Atuação via PJe / e-Proc</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- NOVO: Seção 1.7: Diferenciais de Valor (Por que nos Escolher) --><section id="diferenciais" class="py-20 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span data-animate="fade-up" class="text-sm font-semibold uppercase text-gray-700">O Diferencial que Decola Ações</span>
+                <h2 data-animate="fade-up" data-delay="100" class="mt-2 text-4xl font-extrabold text-[#0F2F52]">Nossos 3 Pilares de Atuação</h2>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Diferencial 1: Prazo e Organização --><div data-animate="fade-up" data-delay="200" class="p-8 bg-white rounded-2xl shadow-xl border-b-4 border-accent-gold transition duration-300 hover:shadow-2xl">
+                        <i data-lucide="clock-5" class="w-12 h-12 color-accent-gold mb-4 mx-auto"></i>
+                        <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Compromisso com o Prazo</h3>
+                        <p class="text-gray-600">Gestão de cronograma rigorosa para que as peças processuais sejam protocoladas dentro da tempestividade exigida pelo Juízo.</p>
+                    </div>
+
+                    <!-- Diferencial 2: Clareza e Didática --><div data-animate="fade-up" data-delay="300" class="p-8 bg-white rounded-2xl shadow-xl border-b-4 border-[#0F2F52] transition duration-300 hover:shadow-2xl">
+                        <i data-lucide="lightbulb" class="w-12 h-12 text-[#0F2F52] mb-4 mx-auto"></i>
+                        <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Laudos Inquestionáveis</h3>
+                        <p class="text-gray-600">Tradução da complexidade técnica (normas e cálculos) em linguagem jurídica clara e objetiva para fácil compreensão do magistrado.</p>
+                    </div>
+
+                    <!-- Diferencial 3: Suporte Estratégico --><div data-animate="fade-up" data-delay="400" class="p-8 bg-white rounded-2xl shadow-xl border-b-4 border-accent-gold transition duration-300 hover:shadow-2xl">
+                        <i data-lucide="users-2" class="w-12 h-12 color-accent-gold mb-4 mx-auto"></i>
+                        <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Parceria com Advogados</h3>
+                        <p class="text-gray-600">Suporte completo na fase de quesitos e audiências, atuando como um braço técnico estratégico do seu escritório.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Sobre o Perito (Credibilidade) --><section id="sobre" class="section-padding bg-white text-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <span class="text-sm font-semibold uppercase text-gray-700">Conheça Nossas Qualificações</span>
-                    <h2 class="mt-2 text-4xl font-extrabold text-[#0F2F52]">Credenciais e Ética Profissional</h2>
+                    <span data-animate="fade-up" class="text-sm font-semibold uppercase color-accent-gold">Conheça Nossas Qualificações</span>
+                    <h2 data-animate="fade-up" data-delay="100" class="mt-2 text-4xl font-extrabold text-[#0F2F52]">Credenciais e Ética Profissional</h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
                     
-                    <!-- Coluna da Foto e Bio (Centralizada) --><div class="lg:col-span-1 space-y-4 text-center">
-                        <!-- Imagem do Perito com Fallback (Nova logo) --><img id="bio-logo-img"
-                            src="uploaded:logo_matheus_carlos_final_corrigida.jpg-619bed65-6743-45aa-b509-ac984476fd54" 
-                            alt="Logotipo Matheus Carlos - Perito Judicial"
-                            class="w-48 h-48 mx-auto object-contain rounded-full mb-4 border-4 border-accent-gold shadow-xl p-4 bg-white"
+                    <!-- Coluna da Foto e Bio (Centralizada) -->
+                    <div data-animate="fade-up" data-delay="200" class="lg:col-span-1 space-y-4 text-center p-6 bg-gray-50 rounded-2xl shadow-xl border-4 border-accent-gold transform hover:scale-[1.03] transition duration-500">
+                        <!-- IMAGEM PRINCIPAL: logo_matheus_carlos_final_corrigida.jpg --><img id="bio-logo-img"
+                            src="uploaded:logo_matheus_carlos_final_corrigida.jpg-7ed1f3f6-c914-4a02-8f48-a16b6e8f751f" 
+                            alt="Foto do Perito Judicial Matheus Carlos"
+                            class="w-48 h-48 mx-auto object-cover rounded-full mb-4 border-4 border-[#0F2F52] shadow-xl p-0 bg-white"
                             onerror="this.style.display='none'; document.getElementById('bio-logo-fallback').style.display='flex';"
                         />
-                        <!-- Fallback Avatar (Visível se a imagem falhar) --><div id="bio-logo-fallback" class="hidden w-48 h-48 mx-auto flex-col items-center justify-center rounded-full mb-4 border-4 border-accent-gold shadow-xl color-primary-dark text-accent-gold">
-                            <i data-lucide="badge-check" class="w-16 h-16"></i>
-                            <span class="text-xl font-bold">MC</span>
+                        <!-- Fallback Avatar (Visível se a imagem falhar) --><div id="bio-logo-fallback" class="hidden w-48 h-48 mx-auto flex-col items-center justify-center rounded-full mb-4 border-4 border-[#0F2F52] shadow-xl bg-white text-accent-gold">
+                            <img src="uploaded:c.png-76688778-56f8-46e9-a2e5-0bc41e85de72" alt="Monograma MC Fallback" class="w-32 h-32 object-contain" />
                         </div>
                         <h3 class="text-3xl font-extrabold text-[#0F2F52]">Matheus Carlos</h3>
-                        <p class="text-lg font-semibold color-accent-gold">Perito Judicial, Financeiro e Trabalhista</p>
-                        <p class="text-sm text-gray-500">Administrador CRA-PE 20-17881</p>
+                        <p class="text-lg font-semibold color-accent-gold">Perito Judicial e Assistente Técnico</p>
+                        <p class="text-sm text-gray-600">Administrador CRA-PE 20-17881 | MBA em Perícia</p>
+                        
+                        <!-- NOVO: Botão de Download do CV --><button onclick="handleDownloadCV()" class="mt-4 cta-button-veritas w-full px-5 py-3 rounded-xl transition duration-150 shadow-md cta-button flex items-center justify-center space-x-2">
+                            <i data-lucide="download" class="w-5 h-5 text-[#0F2F52]"></i>
+                            <span class="text-[#0F2F52]">Baixar Currículo Vitae</span>
+                        </button>
                     </div>
 
-                    <!-- Coluna do Texto Institucional --><div class="lg:col-span-2 lg:pl-8">
-                        <h3 class="text-3xl font-extrabold text-[#0F2F52]">O Pilar da Imparcialidade Técnica</h3>
-                        <p class="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-accent-gold pl-4">
+                    <!-- Coluna do Texto Institucional -->
+                    <div class="lg:col-span-2 lg:pl-8">
+                        <h3 data-animate="fade-up" data-delay="300" class="text-3xl font-extrabold text-[#0F2F52]">O Pilar da Imparcialidade Técnica</h3>
+                        <p data-animate="fade-up" data-delay="400" class="mt-4 text-xl text-gray-700 leading-relaxed border-l-4 border-accent-gold pl-4 bg-gray-50 p-4 rounded-lg">
                             Nossa atuação é regida pelo Código de Processo Civil, pelas Normas Brasileiras de Contabilidade (NBC TP 01) e, acima de tudo, pela **ética e imparcialidade**. Nosso objetivo é apresentar os fatos contábeis de forma clara e inquestionável ao Juízo.
                         </p>
                         
                         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
-                            <!-- Certificado 1 (Toque de Azul Aço) --><div class="flex items-start p-6 bg-white rounded-xl shadow-lg border-l-4 border-[#0F2F52] hover:shadow-xl transition duration-300">
+                            <!-- Certificado 1 (Atualizado) --><div data-animate="fade-up" data-delay="500" class="flex items-start p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent-gold hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
                                 <i data-lucide="book-check" class="w-8 h-8 text-[#0F2F52] mr-4 flex-shrink-0"></i>
                                 <div>
-                                    <h4 class="font-bold text-[#0F2F52]">Registro nos Tribunais</h4>
-                                    <p class="text-sm text-gray-500">Credenciado na Justiça do Trabalho (AJ-JT), Justiça Federal e Tribunais Estaduais.</p>
+                                    <h4 class="font-bold text-[#0F2F52]">Credenciamento Pleno</h4>
+                                    <p class="text-sm text-gray-600">Perito registrado em todas as instâncias: Justiça do Trabalho (AJ-JT), Justiça Federal e Tribunais Estaduais.</p>
                                 </div>
                             </div>
-                            <!-- Certificado 2 (Toque de Bronze) --><div class="flex items-start p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent-gold hover:shadow-xl transition duration-300">
+                            <!-- Certificado 2 (Atualizado) --><div data-animate="fade-up" data-delay="600" class="flex items-start p-6 bg-white rounded-xl shadow-lg border-l-4 border-[#0F2F52] hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
                                 <i data-lucide="shield-check" class="w-8 h-8 color-accent-gold mr-4 flex-shrink-0"></i>
                                 <div>
-                                    <h4 class="font-bold text-[#0F2F52]">Titulação e Formação</h4>
-                                    <p class="text-sm text-gray-500">MBA em Perícia Financeira e Trabalhista.</p>
+                                    <h4 class="font-bold text-[#0F2F52]">Especialização de Alto Nível</h4>
+                                    <p class="text-sm text-gray-600">MBA em Perícia Financeira e Trabalhista, garantindo o máximo de rigor técnico.</p>
                                 </div>
                             </div>
                         </div>
@@ -215,14 +391,14 @@
             </div>
         </section>
 
-        <!-- Seção 3: Serviços Detalhados - Cards de Destaque --><section id="servicos" class="section-padding bg-white">
+        <!-- Seção 3: Serviços Detalhados - Cards de Destaque --><section id="servicos" class="section-padding bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-sm font-semibold uppercase text-gray-700">Nossa Expertise em Números</span>
-                <h2 class="mt-2 text-4xl font-extrabold text-[#0F2F52]">Serviços Chave para a Decisão Judicial</h2>
+                <span data-animate="fade-up" class="text-sm font-semibold uppercase text-gray-700">Nossa Expertise em Números</span>
+                <h2 data-animate="fade-up" data-delay="100" class="mt-2 text-4xl font-extrabold text-[#0F2F52]">Serviços Chave para a Decisão Judicial</h2>
 
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                    <!-- Cartão 1: Perícia Trabalhista (Cor Primária - Bronze) --><div class="group bg-gray-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-8 border-accent-gold flex flex-col h-full transform hover:scale-[1.02]">
+                    <!-- Cartão 1: Perícia Trabalhista (Bronze) --><div data-animate="fade-up" data-delay="200" class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-8 border-accent-gold flex flex-col h-full transform hover:translate-y-[-5px]">
                         <i data-lucide="scale" class="w-12 h-12 color-accent-gold mb-4 transition group-hover:text-[#0F2F52]"></i>
                         <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Perícia Trabalhista</h3>
                         <p class="text-gray-600 flex-grow">Cálculos de liquidação de sentença, apuração de horas extraordinárias, adicionais de insalubridade e periculosidade, e revisão de verbas rescisórias.</p>
@@ -233,7 +409,7 @@
                         </ul>
                     </div>
 
-                    <!-- Cartão 2: Perícia Financeira e Bancária (Cor Secundária - Azul Aço) --><div class="group bg-gray-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-8 border-[#0F2F52] flex flex-col h-full transform hover:scale-[1.02]">
+                    <!-- Cartão 2: Perícia Financeira e Bancária (Azul Aço) --><div data-animate="fade-up" data-delay="300" class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-8 border-[#0F2F52] flex flex-col h-full transform hover:translate-y-[-5px]">
                         <i data-lucide="bar-chart-3" class="w-12 h-12 text-[#0F2F52] mb-4 transition group-hover:text-accent-gold"></i>
                         <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Perícia Financeira</h3>
                         <p class="text-gray-600 flex-grow">Revisão de contratos, checagem de capitalização de juros (anatocismo), taxas abusivas, e recálculo de saldo devedor em empréstimos e financiamentos.</p>
@@ -244,9 +420,9 @@
                         </ul>
                     </div>
 
-                    <!-- Cartão 3: Assistência Técnica (Cor Primária - Bronze) --><div class="group bg-gray-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-8 border-accent-gold flex flex-col h-full transform hover:scale-[1.02]">
+                    <!-- Cartão 3: Assistência Técnica (Bronze) --><div data-animate="fade-up" data-delay="400" class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 border-t-8 border-accent-gold flex flex-col h-full transform hover:translate-y-[-5px]">
                         <i data-lucide="gavel" class="w-12 h-12 color-accent-gold mb-4 transition group-hover:text-[#0F2F52]"></i>
-                        <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Assistência Técnica Judicial</h3>
+                        <h3 class="text-xl font-bold text-[#0F2F52] mb-3">Assistência Técnica</h3>
                         <p class="text-gray-600 flex-grow">Apoio técnico estratégico para advogados. Elaboração de quesitos, pareceres técnicos de contestação e acompanhamento em todas as etapas da perícia.</p>
                         <ul class="mt-4 text-left text-sm text-gray-500 space-y-1 pl-4 list-disc">
                             <li>Formulação Estratégica de Quesitos</li>
@@ -256,25 +432,147 @@
                     </div>
                 </div>
 
-                <!-- Destaque para Advogados (CTA com Bronze e Fundo Azul Aço) --><div class="mt-20 color-primary-dark p-12 rounded-xl shadow-2xl flex flex-col md:flex-row justify-between items-center text-white border-t-8 border-accent-gold">
+                <!-- Destaque para Advogados (CTA com Bronze e Fundo Azul Aço) --><div data-animate="fade-up" data-delay="500" class="mt-20 color-primary-dark p-12 rounded-xl shadow-2xl flex flex-col md:flex-row justify-between items-center text-white border-t-8 border-accent-gold">
                     <div>
                         <h3 class="text-3xl font-extrabold">Seu Aliado Técnico nos Processos</h3>
                         <p class="mt-2 text-gray-300">A precisão de um laudo é o diferencial entre o êxito e o risco.</p>
                     </div>
+                    <!-- CTA OTIMIZADO -->
                     <a href="javascript:void(0)" onclick="window.open(whatsappLink, '_blank')"
                        class="mt-6 md:mt-0 inline-flex items-center px-8 py-4 border border-transparent text-base rounded-xl cta-button-veritas shadow-lg cta-button space-x-2">
                         <i class="fab fa-whatsapp text-lg text-[#0F2F52]"></i>
-                        <span>Contato Imediato via WhatsApp</span>
+                        <span>Solicite Orçamento via WhatsApp</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Seção 4: Contato (Formulário) --><section id="contato" class="section-padding bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl shadow-2xl overflow-hidden">
+        <!-- NOVO: Seção 4: Dúvidas Frequentes (FAQ) --><section id="duvidas" class="section-padding bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span data-animate="fade-up" class="text-sm font-semibold uppercase color-accent-gold">Transparência Total</span>
+                    <h2 data-animate="fade-up" data-delay="100" class="mt-2 text-4xl font-extrabold text-[#0F2F52]">Dúvidas Frequentes (FAQ)</h2>
+                </div>
+
+                <div class="space-y-4">
                     
-                    <!-- Informações de Contato (Fundo Azul Aço) --><div class="p-10 lg:p-12 color-primary-dark text-white flex flex-col justify-center">
+                    <!-- FAQ Item 1 --><div data-animate="fade-up" data-delay="200" class="faq-item">
+                        <details>
+                            <summary>Qual a área de atuação do perito judicial?</summary>
+                            <p>Nossa especialidade é em Perícia Contábil, com foco em ações **Trabalhistas** (cálculos de horas extras, adicionais, liquidação de sentença) e **Financeiras/Bancárias** (revisão de juros, contratos e anatocismo). Atuamos em todas as instâncias judiciais via PJe e e-Proc.</p>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 2 --><div data-animate="fade-up" data-delay="300" class="faq-item">
+                        <details>
+                            <summary>Qual o prazo médio para a entrega de um laudo ou parecer?</summary>
+                            <p>O prazo varia conforme a complexidade do caso e a documentação disponível. Contudo, priorizamos a tempestividade. Em média, um laudo simples é concluído em **10 a 15 dias úteis** após o envio de todos os documentos necessários. O prazo exato é definido na proposta de honorários.</p>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 3 --><div data-animate="fade-up" data-delay="400" class="faq-item">
+                        <details>
+                            <summary>O que é a Assistência Técnica Judicial?</summary>
+                            <p>É o suporte profissional que o perito oferece à parte (autor ou réu) e seu advogado. Envolve a elaboração de quesitos estratégicos, pareceres técnicos críticos ao laudo oficial e auxílio na preparação de documentos para a perícia, maximizando as chances de êxito.</p>
+                        </details>
+                    </div>
+                    
+                     <!-- FAQ Item 4 --><div data-animate="fade-up" data-delay="500" class="faq-item">
+                        <details>
+                            <summary>Como solicitar um orçamento de honorários?</summary>
+                            <p>Para um orçamento preciso, solicitamos a cópia da petição inicial (ou da sentença), documentos essenciais para o cálculo (ex: holerites, contratos) e o número do processo (para consulta). O contato via WhatsApp é o método mais rápido para iniciar a consulta.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Seção 5: Avaliações de Clientes (Antiga Seção 4) --><section id="avaliacoes" class="section-padding bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span data-animate="fade-up" class="text-sm font-semibold uppercase color-accent-gold">Credibilidade Comprovada</span>
+                <h2 data-animate="fade-up" data-delay="100" class="mt-2 text-4xl font-extrabold text-[#0F2F52]">O que Nossos Clientes Dizem</h2>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Avaliação 1 --><div data-animate="fade-up" data-delay="200" class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-[#0F2F52] flex flex-col items-center text-center transform hover:shadow-xl transition duration-300">
+                        <div class="flex mb-4">
+                            <!-- Estrelas de avaliação (5 estrelas) --><i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-4">"A perícia trabalhista foi extremamente detalhada e crucial para o sucesso do nosso caso. O Matheus demonstrou um conhecimento técnico impecável e entregou o laudo dentro do prazo."</p>
+                        <p class="font-bold text-[#0F2F52]">- Dr. Eduardo M. F.</p>
+                        <p class="text-sm text-gray-500">Advogado Civil e Trabalhista</p>
+                    </div>
+
+                    <!-- Avaliação 2 --><div data-animate="fade-up" data-delay="300" class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-accent-gold flex flex-col items-center text-center transform hover:shadow-xl transition duration-300">
+                        <div class="flex mb-4">
+                            <!-- Estrelas de avaliação (5 estrelas) --><i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-4">"O trabalho de assistência técnica na revisão financeira foi fundamental. A precisão dos cálculos desmontou a tese da parte contrária de forma irrefutável."</p>
+                        <p class="font-bold text-[#0F2F52]">- Dra. Camila S. R.</p>
+                        <p class="text-sm text-gray-500">Advogada Cível e Bancária</p>
+                    </div>
+
+                    <!-- Avaliação 3 --><div data-animate="fade-up" data-delay="400" class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-[#0F2F52] flex flex-col items-center text-center transform hover:shadow-xl transition duration-300">
+                        <div class="flex mb-4">
+                            <!-- Estrelas de avaliação (5 estrelas) --><i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current color-accent-gold"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-4">"Rapidez, clareza e um profissionalismo acima da média. A comunicação durante o processo foi excelente, resultando em um parecer técnico que não deixou dúvidas."</p>
+                        <p class="font-bold text-[#0F2F52]">- Escritório F&P Associados</p>
+                        <p class="text-sm text-gray-500">Setor Jurídico</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 6: Contato (Formulário - Antiga Seção 5) --><section id="contato" class="section-padding bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 bg-gray-50 rounded-xl shadow-2xl overflow-hidden border border-gray-100">
+                    
+                    <!-- Formulário de Contato --><div data-animate="fade-left" data-delay="100" class="p-10 lg:p-12 order-2 md:order-1">
+                        <h3 class="text-3xl font-extrabold text-[#0F2F52] mb-8 border-b-2 border-gray-100 pb-4">Inicie sua Consulta</h3>
+                        <!-- Lembrete para trocar o action do Formspree --><form id="contact-form" method="POST" action="https://formspree.io/f/xpwygpzb"> 
+                            <!-- LEMBRETE: TROQUE ESTA URL PELO SEU ENDPOINT FORMREE REAL --><div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold text-gray-700">Nome / Escritório</label>
+                                    <input type="text" name="name" id="name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-gray-700">E-mail</label>
+                                    <!-- O Formspree usa o campo '_replyto' para definir o e-mail de resposta --><input type="email" name="_replyto" id="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold">
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="subject" class="block text-sm font-semibold text-gray-700">Assunto (Ex: Quesitos Trabalhistas)</label>
+                                <!-- O Formspree usa o campo '_subject' para definir o assunto do e-mail que você receberá --><input type="text" name="_subject" id="subject" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold">
+                            </div>
+                            <div class="mt-6">
+                                <label for="message" class="block text-sm font-semibold text-gray-700">Mensagem e Urgência</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold"></textarea>
+                            </div>
+                            <!-- Esta div será usada para exibir mensagens de sucesso/erro --><div id="form-message" class="mt-4 text-center text-sm font-bold hidden"></div>
+                            <div class="mt-8">
+                                <button type="submit" class="w-full inline-flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg text-lg font-bold bg-[#0F2F52] text-gray-100 hover:bg-[#163969] transition duration-300 cta-button">
+                                    <i data-lucide="send" class="w-5 h-5 mr-3"></i> Enviar Solicitação
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Informações de Contato (Fundo Azul Aço) --><div data-animate="fade-right" data-delay="100" class="p-10 lg:p-12 color-primary-dark text-white flex flex-col justify-center order-1 md:order-2 border-l-4 border-accent-gold">
                         <h2 class="text-3xl font-extrabold mb-4 border-b-4 border-accent-gold pb-3">Contato Profissional</h2>
                         <p class="text-gray-400 mb-8">Envie os detalhes do seu processo ou solicite o currículo completo para nomeação.</p>
                         
@@ -304,36 +602,6 @@
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Formulário de Contato --><div class="p-10 lg:p-12">
-                        <h3 class="text-2xl font-bold text-[#0F2F52] mb-6">Inicie sua Consulta</h3>
-                        <!-- Lembrete para trocar o action do Formspree --><form id="contact-form" method="POST" action="https://formspree.io/f/xpwygpzb"> 
-                            <!-- LEMBRETE: TROQUE ESTA URL PELO SEU ENDPOINT FORMREE REAL --><div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-semibold text-gray-700">Nome / Escritório</label>
-                                    <input type="text" name="name" id="name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-semibold text-gray-700">E-mail</label>
-                                    <!-- O Formspree usa o campo '_replyto' para definir o e-mail de resposta --><input type="email" name="_replyto" id="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold">
-                                </div>
-                            </div>
-                            <div class="mt-6">
-                                <label for="subject" class="block text-sm font-semibold text-gray-700">Assunto (Ex: Quesitos Trabalhistas)</label>
-                                <!-- O Formspree usa o campo '_subject' para definir o assunto do e-mail que você receberá --><input type="text" name="_subject" id="subject" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold">
-                            </div>
-                            <div class="mt-6">
-                                <label for="message" class="block text-sm font-semibold text-gray-700">Mensagem e Urgência</label>
-                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-inner p-3 focus:ring-accent-gold focus:border-accent-gold"></textarea>
-                            </div>
-                            <!-- Esta div será usada para exibir mensagens de sucesso/erro --><div id="form-message" class="mt-4 text-center text-sm font-bold hidden"></div>
-                            <div class="mt-8">
-                                <button type="submit" class="w-full inline-flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg text-lg font-bold bg-[#0F2F52] text-gray-100 hover:bg-[#163969] transition duration-300 cta-button">
-                                    <i data-lucide="send" class="w-5 h-5 mr-3"></i> Enviar Solicitação
-                                </button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </section>
@@ -346,6 +614,10 @@
                 <a href="#home" class="text-gray-400 hover:text-accent-gold transition duration-150">Início</a>
                 <span class="text-gray-600">|</span>
                 <a href="#servicos" class="text-gray-400 hover:text-accent-gold transition duration-150">Serviços</a>
+                <span class="text-gray-600">|</span>
+                <a href="#duvidas" class="text-gray-400 hover:text-accent-gold transition duration-150">Dúvidas</a>
+                <span class="text-gray-600">|</span>
+                <a href="#avaliacoes" class="text-gray-400 hover:text-accent-gold transition duration-150">Clientes</a>
                 <span class="text-gray-600">|</span>
                 <a href="#contato" class="text-gray-400 hover:text-accent-gold transition duration-150">Contato</a>
             </div>
@@ -372,7 +644,60 @@
             });
         });
 
-        // 4. Tratamento de envio do Formulário de Contato com feedback
+        // 4. Lógica de Animações ao Rolar (AOS-like)
+        function setupScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                // Trigger quando 10% do item estiver visível
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        
+                        // Remove as classes de estado inicial para que a transição ocorra
+                        element.classList.remove('animate-hidden', 'animate-fade-up', 'animate-fade-left', 'animate-fade-right');
+                        
+                        // Para de observar este elemento após a animação
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            // Seleciona todos os elementos que têm o atributo data-animate
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                const animationType = el.getAttribute('data-animate');
+                // Aplica um delay mais limpo (0, 100ms, 200ms, etc.)
+                const delay = el.getAttribute('data-delay') || '0';
+                
+                // 1. Define o estado inicial invisível
+                el.classList.add('animate-hidden');
+
+                // 2. Define a direção da animação
+                if (animationType === 'fade-up') {
+                    el.classList.add('animate-fade-up');
+                } else if (animationType === 'fade-left') {
+                    el.classList.add('animate-fade-left');
+                } else if (animationType === 'fade-right') {
+                    el.classList.add('animate-fade-right');
+                }
+
+                // 3. Aplica o delay customizado
+                el.style.transitionDelay = `${delay}ms`;
+
+                // 4. Inicia a observação
+                observer.observe(el);
+            });
+        }
+        
+        // Chama a função de animação após o carregamento da página
+        window.addEventListener('load', setupScrollAnimations);
+
+
+        // 5. Tratamento de envio do Formulário de Contato com feedback
         document.getElementById('contact-form').addEventListener('submit', async function(event) {
             event.preventDefault();
             const form = event.target;
@@ -383,6 +708,7 @@
             submitButton.innerHTML = '<i data-lucide="loader-circle" class="w-5 h-5 mr-3 animate-spin"></i> Enviando...';
             submitButton.disabled = true;
             formMessage.classList.add('hidden');
+            lucide.createIcons(); // Recria ícones para mostrar o spinner
 
             try {
                 const response = await fetch(form.action, {
@@ -400,7 +726,6 @@
                     formMessage.classList.add('text-green-600');
                     form.reset();
                 } else {
-                    // Tenta ler o erro do Formspree, mas usa mensagem genérica se falhar
                     let errorMessage = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde.';
                     try {
                         const data = await response.json();
@@ -408,7 +733,7 @@
                             errorMessage = `Erro ao enviar: ${data.error}`;
                         }
                     } catch (e) {
-                        // Ignora erro ao ler JSON e usa a mensagem padrão de falha
+                        // Ignora
                     }
                     
                     formMessage.textContent = errorMessage;
@@ -417,7 +742,6 @@
                     formMessage.classList.remove('text-green-600');
                 }
             } catch (error) {
-                // Erro de rede ou CORS
                 formMessage.textContent = 'Ocorreu um erro de rede. Verifique sua conexão e tente novamente.';
                 formMessage.classList.remove('hidden');
                 formMessage.classList.add('text-red-600');
