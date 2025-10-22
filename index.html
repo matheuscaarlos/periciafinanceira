@@ -216,8 +216,8 @@
 
     <!-- Cabeçalho (Header) e Navegação - BASE AZUL MARINHO - Melhorado com Sticky-Header --><header class="sticky-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- LOGO: Substituído por texto --><a href="#home" class="flex items-center space-x-2" aria-label="Página Inicial do Perito Técnico">
-                <span class='text-2xl sm:text-3xl font-black tracking-wider text-gray-100 hover:text-accent-gold transition duration-300'>PERITO <span class='text-gray-400'>TÉCNICO</span></span>
+            <!-- LOGO: Adicionado Logotipo do arquivo c.png --><a href="#home" class="flex items-center" aria-label="Página Inicial do Perito Técnico">
+                <img src="c.png" alt="Logotipo Matheus Carlos Perito Judicial" class="h-10 w-auto">
             </a>
             <nav class="hidden md:flex space-x-8 items-center" aria-label="Navegação Principal">
                 <a href="#home" class="text-gray-300 hover:text-accent-gold transition duration-150 font-semibold">Início</a>
@@ -363,11 +363,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
                     
                     <!-- Coluna da Foto e Bio (Centralizada) -->
-                    <!-- Ajuste na largura do card em mobile para evitar excesso de preenchimento -->
                     <div data-animate="fade-up" data-delay="200" class="lg:col-span-1 space-y-4 text-center p-6 bg-gray-50 rounded-2xl shadow-xl border-4 border-accent-gold card-hover-effect mx-auto w-full max-w-sm">
-                        <!-- Avatar genérico com ícone -->
-                        <div class="w-40 h-40 sm:w-48 sm:h-48 mx-auto flex-col items-center justify-center rounded-full mb-4 border-4 border-[#0F2F52] shadow-xl bg-gray-200 text-[#0F2F52] flex p-0">
-                            <i data-lucide="user-check" class="w-20 h-20 sm:w-24 sm:h-24 color-accent-gold"></i>
+                        <!-- Ícone de usuário no lugar da foto de perfil, como estava originalmente -->
+                        <div class="w-40 h-40 sm:w-48 sm:h-48 mx-auto rounded-full mb-4 border-4 border-[#0F2F52] shadow-xl overflow-hidden bg-gray-200 flex justify-center items-center">
+                            <i data-lucide="user-circle" class="w-32 h-32 text-[#0F2F52]"></i>
                         </div>
                         <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0F2F52]">Matheus Carlos</h3>
                         <p class="text-lg font-semibold color-accent-gold">Perito Judicial e Assistente Técnico</p>
@@ -568,7 +567,6 @@
                         <!-- Lembrete para trocar o action do Formspree --><form id="contact-form" method="POST" action="https://formspree.io/f/xpwygpzb"> 
                             <!-- LEMBRETE: TROQUE ESTA URL PELO SEU ENDPOINT FORMREE REAL -->
                             <!-- OTIMIZAÇÃO: 1 coluna em mobile, 2 em desktop para Nome/Email -->
-                            <!-- ERRO CORRIGIDO: Removida a chave '}' extra e garantida a estrutura DIV correta -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-semibold text-gray-700">Nome / Escritório</label>
